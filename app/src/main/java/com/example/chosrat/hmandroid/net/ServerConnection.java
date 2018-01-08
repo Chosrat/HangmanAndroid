@@ -31,7 +31,6 @@ public class ServerConnection implements Runnable {
     private DataOutputStream toServer;
     private DataInputStream fromServer;
     private boolean connected;
-    //private Handler outputHandler;
 
     public void connect() {
         try {
@@ -79,18 +78,18 @@ public class ServerConnection implements Runnable {
                 while (true) {
                     String reply = (String) fromServer.readUTF();
                     Bundle bundle = new Bundle();
-                    Message msg = new Message();
+                    Message message = new Message();
                     bundle.putString("KEY", reply);
-                    msg.setData(bundle);
-                    out.handleMessage(msg);
+                    message.setData(bundle);
+                    out.handleMessage(message);
                 }
             } catch (IOException ex) {
                 if (connected) {
                     Bundle bundle = new Bundle();
-                    Message msg = new Message();
+                    Message message = new Message();
                     bundle.putString("KEY", "CONNECTION LOST");
-                    msg.setData(bundle);
-                    out.handleMessage(msg);
+                    message.setData(bundle);
+                    out.handleMessage(message);
                 }
             }
         }

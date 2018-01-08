@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             ServerConnection serverConnection = new ServerConnection();
             serverConnection.connect();
             serverConnection.createListener(handler);
-            return serverConnection;
+            return serverConnection;                            //returnerar serverconnection till onpostExecute som hanteras av main tråden
         }
 
         @Override
